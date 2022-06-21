@@ -1,7 +1,7 @@
 from random import randint
 import time
 
-print('-------------Jogo do chute------------')
+print('-------------Advinhe um número------------')
 
 random = randint(0, 20)
 chute = 0;
