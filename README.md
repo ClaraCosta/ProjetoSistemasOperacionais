@@ -1,1 +1,1 @@
-# ProjetoSistemasOperacionais
+# Projeto de sistemas operacionais
