@@ -1,14 +1,23 @@
 from random import randint
 import time
+import psutil 
+  
+print('')    
+print('--------------------Monitorando recursos---------------------')  
+print(psutil.cpu_times())
+print('-------------------------------------------------------------')   
+print('') 
+
 
 print('-------------Advinhe um número------------')
 
-random = randint(0, 20)
+random = randint(0, 50)
 chute = 0;
 chances = 5;
+playagain = 0;
 
 while chute != random:
-    chute = input('Chute um número entre 1 e 20: ')
+    chute = input('Chute um número entre 1 e 50: ')
 
     if chute.isnumeric():
         chute = int(chute)
@@ -18,6 +27,12 @@ while chute != random:
             print('')
             print('Parabéns, você venceu! O número era {} e você ainda tinha {} chances.'.format(random, chances))
             print('')
+            print('')    
+            print('--------------------Monitorando recursos---------------------')  
+            print(psutil.cpu_times())
+            print('-------------------------------------------------------------')   
+            print('')      
+            time.sleep(5)
             break;
 
         else:
@@ -41,15 +56,29 @@ while chute != random:
             print('Suas chances acabaram...')
             time.sleep(2)
             print('você perdeu!')
-            time.sleep(1)
-            print('Seu programa será encerrado em 3 segundos...')
-            print('0:03')
-            time.sleep(1)
-            print('0:02')
-            time.sleep(1)
-            print('0:01')
+            time.sleep(3)
+            print('Deseja jogar novamente?')
+            playagain = int(input('Digite 1 para "Sim" ou 2 para não:'))
 
-            break;
+            if playagain == 1:
+                print('Reiniciando jogo...')
+                time.sleep(3)
+                print('Zerando variáveis...')
+                time.sleep(3)    
+                print('')    
+                print('--------------------Monitorando recursos---------------------')  
+                print(psutil.cpu_times())
+                print('-------------------------------------------------------------')   
+                print('') 
+                time.sleep(5)            
+            else:
+                print('')    
+                print('--------------------Monitorando recursos---------------------')  
+                print(psutil.cpu_times())
+                print('-------------------------------------------------------------')   
+                print('')
+                time.sleep(5)   
+                break
 
 print('----------------Fim---------------')
 print('--------Encerrando programa-------')
