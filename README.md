@@ -2,7 +2,7 @@
 
 #### Resumo do projeto:
 
-O objetivo do projeto, é monitorar os recursos utilizados pelo Desktop em ambientes diferentes (Windows e Linux), onde, os recursos de hardware disponibilizados serão os mesmos. Durante a execução de um programa em Python (Bingo), que sorteia uma grande quatidade de jogadores e cartelas contendo números ateatórios, onde, é encerrado somente quando há um vencedor ou vencedores.
+O objetivo do projeto, é monitorar os recursos utilizados pelo Desktop em ambientes diferentes (Windows e Debian), onde, os recursos de hardware disponibilizados serão os mesmos. Durante a execução de um programa em Python (Bingo), que sorteia uma grande quatidade de jogadores e cartelas contendo números ateatórios, onde, é encerrado somente quando há um vencedor ou vencedores.
 
 #### Outras observações sobre o "Bingo":
 - Os números sorteados pela cartela não são repetidos
