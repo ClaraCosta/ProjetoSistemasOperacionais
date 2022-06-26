@@ -1,85 +1,87 @@
+import os
 from random import randint
 import time
-import psutil 
-  
-print('')    
-print('--------------------Monitorando recursos---------------------')  
-print(psutil.cpu_times())
-print('-------------------------------------------------------------')   
-print('') 
+import psutil
 
 
-print('-------------Advinhe um número------------')
+def contido(n, lista):
+    if (n in lista):
+        return True
+    else:
+        return False
 
-random = randint(0, 50)
-chute = 0;
-chances = 5;
-playagain = 0;
 
-while chute != random:
-    chute = input('Chute um número entre 1 e 50: ')
+def novo(n1, n2):
+    numeros = []
 
-    if chute.isnumeric():
-        chute = int(chute)
-        chances = chances - 1
+    while (len(numeros) < 10):
+        num = randint(n1, n2)
+        if (contido(num, numeros) == False):
+            numeros.append(num)
+    return numeros
 
-        if chute == random:
-            print('')
-            print('Parabéns, você venceu! O número era {} e você ainda tinha {} chances.'.format(random, chances))
-            print('')
-            print('')    
-            print('--------------------Monitorando recursos---------------------')  
-            print(psutil.cpu_times())
-            print('-------------------------------------------------------------')   
-            print('')      
-            time.sleep(5)
-            break;
 
-        else:
-            print('')
-            if chute > random:
-                print('Errado!')
-                time.sleep(2)
-                print ('Dica: É um número menor.')
-                time.sleep(2)
+def numero_sorteado(n1, n2, nsort):
+    while True:
+        n = randint(n1, n2)
+        if not contido(n, nsort):
+            nsort.append(n)
+            return n
 
-            else:
 
-                print('Você errou!')
-                print('Dica: É um número maior.')
-                time.sleep(2)
-            print('Você ainda possui {} chances. Tente novamente!'.format(chances))
-            print('')
+def limpar():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
-        if chances == 0:
-            print('')
-            print('Suas chances acabaram...')
-            time.sleep(2)
-            print('você perdeu!')
-            time.sleep(3)
-            print('Deseja jogar novamente?')
-            playagain = int(input('Digite 1 para "Sim" ou 2 para não:'))
 
-            if playagain == 1:
-                print('Reiniciando jogo...')
-                time.sleep(3)
-                print('Zerando variáveis...')
-                time.sleep(3)    
-                print('')    
-                print('--------------------Monitorando recursos---------------------')  
-                print(psutil.cpu_times())
-                print('-------------------------------------------------------------')   
-                print('') 
-                time.sleep(5)            
-            else:
-                print('')    
-                print('--------------------Monitorando recursos---------------------')  
-                print(psutil.cpu_times())
-                print('-------------------------------------------------------------')   
-                print('')
-                time.sleep(5)   
-                break
+num = randint(500, 1000)
+cartelas = []
+sorteado = []
+ganhadores = []
+vencedor = False
+count = 0
 
-print('----------------Fim---------------')
-print('--------Encerrando programa-------')
-time.sleep(3)
+qtde = 0
+for i in range(num):
+    lista = novo(1, 50)
+    cartelas.append(lista)
+
+while not vencedor:
+    sort = numero_sorteado(1, 50, sorteado)
+    print("Bingo")
+    print(f"Número sorteado: {sort}")
+    for i in range(len(cartelas)):
+        qtde = 0
+        for j in range(len(cartelas[i])):
+            if (contido(cartelas[i][j], sorteado) == True):
+                qtde += 1
+        print(f"Jogador {i + 1}", (cartelas[i]), qtde)
+        if qtde == 10:
+            vencedor = True
+            ganhadores.append(i)
+    if not vencedor:
+        print("Ainda não temos vencedores.")
+        count = count + 1
+        print('A quantidade de números sorteados até o momento é: ',count)
+        print('------------Monitor de recursos-----------')
+        print('Utilização de CPU: ', psutil.cpu_percent(1))
+        print('Frequência da CPU: ', psutil.cpu_freq())
+        print('------------------------------------------')
+        print('')
+        time.sleep(1)
+
+print()
+
+for s in ganhadores:
+    print(f"Jogador {s + 1} completou a cartela! ", cartelas[s])
+    time.sleep(1)
+
+print("Números sorteados: ", sorteado)
+print('------------Monitor de recursos-----------')
+print('Utilização de CPU: ', psutil.cpu_percent(1))
+print('Frequência da CPU: ', psutil.cpu_freq())
+print('------------------------------------------')
+time.sleep(1)
+
