@@ -3,7 +3,6 @@ from random import randint
 import time
 import psutil
 
-
 def contido(n, lista):
     if (n in lista):
         return True
@@ -36,7 +35,8 @@ def limpar():
         os.system('clear')
 
 
-num = randint(500, 1000)
+
+num = (50000)
 cartelas = []
 sorteado = []
 ganhadores = []
@@ -50,7 +50,7 @@ for i in range(num):
 
 while not vencedor:
     sort = numero_sorteado(1, 50, sorteado)
-    print("Bingo")
+    print("soBET")
     print(f"Número sorteado: {sort}")
     for i in range(len(cartelas)):
         qtde = 0
@@ -65,23 +65,11 @@ while not vencedor:
         print("Ainda não temos vencedores.")
         count = count + 1
         print('A quantidade de números sorteados até o momento é: ',count)
-        print('------------Monitor de recursos-----------')
-        print('Utilização de CPU: ', psutil.cpu_percent(1))
-        print('Frequência da CPU: ', psutil.cpu_freq())
-        print('------------------------------------------')
-        print('')
-        time.sleep(1)
+        #time.sleep(1)
+        #limpar()
 
 print()
-
 for s in ganhadores:
     print(f"Jogador {s + 1} completou a cartela! ", cartelas[s])
-    time.sleep(1)
 
 print("Números sorteados: ", sorteado)
-print('------------Monitor de recursos-----------')
-print('Utilização de CPU: ', psutil.cpu_percent(1))
-print('Frequência da CPU: ', psutil.cpu_freq())
-print('------------------------------------------')
-time.sleep(1)
-
