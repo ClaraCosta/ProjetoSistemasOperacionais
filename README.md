@@ -18,4 +18,3 @@ O objetivo do projeto, é monitorar os recursos utilizados pelo Desktop em ambie
 - Os
 - Random
 - Time
-- Psutil
